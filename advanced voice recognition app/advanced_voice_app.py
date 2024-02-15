@@ -8,14 +8,14 @@ import smtplib
 import pyowm
 import pytz
 
-# Initialize text-to-speech engine
+#initialize text-to-speech engine
 engine = pyttsx3.init()
 
-# Set up email configuration
+#set up email configuration
 EMAIL_PASSWORD = 'lindelanimalinga95@gmail.com'
 EMAIL_PASSWORD = 'muntuza@0101'
 
-# Speech recognition
+#speech recognition
 def recognize_speech():
     r = sr.Recognizer()
     with sr.Microphone() as source:
@@ -32,12 +32,12 @@ def recognize_speech():
         print("Sorry, I could not understand that.")
         return ""
 
-# Speak function
+#talk function
 def talk(text):
     engine.say(text)
     engine.runAndWait()
 
-# Send Email
+#send email function
 def send_email(to, subject, content):
     try:
         server = smtplib.SMTP('smtp.gmail.com', 587)
@@ -52,7 +52,7 @@ def send_email(to, subject, content):
         print(e)
         print("Failed to send email.")
 
-# Weather updates
+#weather updates function
 def get_weather():
     owm = pyowm.OWM('9e2b1cd1be621688034a20f11a64471d')
     city = 'johannesburg'
@@ -93,12 +93,15 @@ def execute_task(query):
         webbrowser.open("https://www.youtube.com") #url used for testing purposes
         return "Opening YouTube..."
     elif 'open google' in query:
+        #prompt user to open google
         webbrowser.open("https://www.google.com") #url used for testing purposes
         return "Opening Google..."
     elif 'time' in query:
+        #provide user with current time
         current_time = datetime.datetime.now().strftime("%H:%M")
         return f"The current time is {current_time}."
     elif 'quit' in query:
+        #prompts user to exit program
         talk("Goodbye!")
         exit()
     else:
