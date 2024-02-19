@@ -10,7 +10,9 @@ import pytz
 
 #initialize text-to-speech engine
 engine = pyttsx3.init()
-
+#initialize modules to variables
+web = webbrowser
+wiki = wikipedia
 #set up email configuration
 EMAIL_PASSWORD = 'lindelanimalinga95@gmail.com'
 EMAIL_PASSWORD = 'muntuza@0101'
@@ -86,15 +88,15 @@ def execute_task(query):
         search_query = recognize_speech()
         #make use of google search url for results
         search_url = f"https://www.google.com/search?q={search_query}"
-        webbrowser.open(search_url)
+        web.open(search_url)
         return f"Here are the search results for {search_query}."
     elif 'open youtube' in query:
         #prompt user to open youtube
-        webbrowser.open("https://www.youtube.com") #url used for testing purposes
+        web.open("https://www.youtube.com") #url used for testing purposes
         return "Opening YouTube..."
     elif 'open google' in query:
         #prompt user to open google
-        webbrowser.open("https://www.google.com") #url used for testing purposes
+        web.open("https://www.google.com") #url used for testing purposes
         return "Opening Google..."
     elif 'time' in query:
         #provide user with current time
@@ -107,7 +109,7 @@ def execute_task(query):
     else:
         try:
             talk("Searching...")
-            result = wikipedia.summary(query, sentences=2)
+            result = wiki.summary(query, sentences=2)
             return result
         except Exception as e:
             return "I'm sorry, I couldn't find any information on that."
