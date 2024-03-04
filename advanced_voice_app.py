@@ -54,7 +54,7 @@ def send_email(to, subject, content):
 
 #weather updates function
 def get_weather():
-    owm = pyowm.OWM('9e2b1cd1be621688034a20f11a64471d')
+    owm = pyowm.OWM('9e2b1cd1be621688034a20f11a64471d') #api key
     city = 'johannesburg'
     observation = owm.weather_manager().weather_at_place(city)
     wt = observation.weather
