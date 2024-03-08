@@ -43,7 +43,7 @@ class BMICalculator:
                           height REAL,
                           BMI REAL)''')
         self.conn.commit()
-
+    #method used to calculate BMI 
     def calculate_bmi(self):
         try:
             weight = float(self.entry_weight.get())
@@ -58,7 +58,7 @@ class BMICalculator:
 
         except ValueError as e:
             messagebox.showerror("Error", "Please enter valid input for height and weight.")
-    
+    #method used to view calculated BMI 
     def view_history(self):
         history_window = tk.Toplevel(self.master)
         history_window.title("BMI History")
@@ -72,7 +72,7 @@ class BMICalculator:
         data = self.con.fetchall()
         for row in data:
             history_listbox.insert(tk.END, f"Weight: {row[1]} kg, Height: {row[2]} m, BMI: {row[3]: 2f}")
-
+    #method used for closing/deleting history
     def __del__(self):
         self.con.close()
              
